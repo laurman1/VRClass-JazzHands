@@ -223,7 +223,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.27684, y: -10.124069, z: -11.063876}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.64, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 442634886}
@@ -504,7 +504,7 @@ Transform:
   m_GameObject: {fileID: 52776921}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.259, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52776921}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2213c36610e3b1c4bbf886810ed9db12, type: 3}
   m_Name: 
@@ -575,13 +575,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 52776921}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 919e39492806b334982b6b84c90dd927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_System: {fileID: 52776931}
-  m_TurnSpeed: 60
+  m_TurnSpeed: 80
   m_LeftHandTurnAction:
     m_UseReference: 0
     m_Action:
@@ -641,7 +641,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 0.5
+  m_Height: 1
   m_Radius: 0.14
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -746,6 +746,9 @@ MonoBehaviour:
   - {fileID: 249145294}
   - {fileID: 1989166490}
   - {fileID: 413277045}
+  - {fileID: 449679470}
+  - {fileID: 40392955}
+  - {fileID: 662133144}
   m_InteractionLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -3147,7 +3150,7 @@ MonoBehaviour:
       m_Name: Position
       m_Type: 0
       m_ExpectedControlType: Vector3
-      m_Id: 613dce7e-bf3d-4c78-908a-9b3002d28e1d
+      m_Id: 990c991e-9299-4fc8-a4c2-8558704d4a11
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -3160,7 +3163,7 @@ MonoBehaviour:
       m_Name: Rotation
       m_Type: 0
       m_ExpectedControlType: Quaternion
-      m_Id: f616e04e-5a63-441f-a069-a8fcf4749151
+      m_Id: bc92fbd6-e729-4e01-a3f6-af3902d7d2d7
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -3173,7 +3176,7 @@ MonoBehaviour:
       m_Name: Is Tracked
       m_Type: 1
       m_ExpectedControlType: Button
-      m_Id: c886d3e0-a7c0-47ad-a5f6-ab8dbab8a258
+      m_Id: 2fe8678b-89d7-4c5b-ba77-69d5251b26bf
       m_Processors: 
       m_Interactions: 
       m_SingletonActionBindings: []
@@ -7064,7 +7067,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1788414794}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f9ac216f0eb04754b1d938aac6380b31, type: 3}
   m_Name: 
