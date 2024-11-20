@@ -7,7 +7,9 @@ using UnityEngine.UI;
 public class SlectionState : MonoBehaviour
 {
     public TextMeshProUGUI armsText;
-    public CubePlate plateScript;
+    public TextMeshProUGUI exerText;
+    public CubePlate armsPlateScript;
+    public CubePlate exerPlateScript;
     
     // Start is called before the first frame update
     void Start()
@@ -18,11 +20,11 @@ public class SlectionState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (plateScript.leftOrRight == 0)
+        if (armsPlateScript.leftOrRight == 0)
         {
             armsText.text = "Selected Arm: Left";
         }
-        else if (plateScript.leftOrRight == 1)
+        else if (armsPlateScript.leftOrRight == 1)
         {
             armsText.text = "Selected Arm: Right";
         }
@@ -30,6 +32,20 @@ public class SlectionState : MonoBehaviour
         {
             armsText.text = "Selected Arm: None";
         }
-        
+
+        if (exerPlateScript.exer1or2 == 0)
+        {
+            exerText.text = "Selected Exericese: 1";
+        }
+        else if (exerPlateScript.exer1or2 == 1)
+        {
+            exerText.text = "Selected Exercise: 2";
+        }
+        else
+        {
+            exerText.text = "Selected Exercise: None";
+        }
+        Debug.Log("exer: " + exerPlateScript.exer1or2);
+
     }
 }

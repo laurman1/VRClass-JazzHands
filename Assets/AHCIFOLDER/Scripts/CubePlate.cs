@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CubePlate : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class CubePlate : MonoBehaviour
     private Vector3 lerpTo;
     public float lerpSpeed;
     public GameObject plate;
-    public GameObject hoverCubeLeft;
-    public GameObject hoverCubeRight;
+    public GameObject hoverCube1;
+    public GameObject hoverCube2;
     public HoverRotate hoverScript;
+
+    public string cubeTag;
+    public string cube1Name;
+    public string cube2Name;
 
     private bool shouldDrop = false;
     public float plateDrop;
@@ -21,17 +26,21 @@ public class CubePlate : MonoBehaviour
     public float waitTime;
     private Transform cube;
 
-    public Renderer cubeRendererLeft;
-    public Material startMaterialLeft;
-    public Material lockedInMaterialLeft;
-    public Material onPlateMaterialLeft;
+    public Renderer cubeRenderer1;
+    public Material startMaterial1;
+    public Material lockedInMaterial1;
+    public Material onPlateMaterial1;
     
-    public Renderer cubeRendererRight;
-    public Material startMaterialRight;
-    public Material lockedInMaterialRight;
-    public Material onPlateMaterialRight;
+    public Renderer cubeRenderer2;
+    public Material startMaterial2;
+    public Material lockedInMaterial2;
+    public Material onPlateMaterial2;
 
     public int leftOrRight;
+    public int exer1or2;
+
+    public ReturnCubes cubeScript1;
+    public ReturnCubes cubeScript2;
     
     // Start is called before the first frame update
     void Start()
@@ -44,22 +53,28 @@ public class CubePlate : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Arm"))
+        if (collision.gameObject.CompareTag(cubeTag))
         {
             cube = collision.transform;
             cube.SetParent(plate.transform);
 
             StartCoroutine(waitBeforeLerp());
 
-            if (collision.gameObject.name == "CubeLeft")
+            if (collision.gameObject.name == cube1Name)
             {
                 leftOrRight = 0;
-                cubeRendererLeft.material = onPlateMaterialLeft;
+                exer1or2 = 0;
+                cubeRenderer1.material = onPlateMaterial1;
             }
-            else if (collision.gameObject.name == "CubeRight")
+            else if (collision.gameObject.name == cube2Name)
             {   
                 leftOrRight = 1;
-                cubeRendererRight.material = onPlateMaterialRight;
+                exer1or2 = 1;
+                cubeRenderer2.material = onPlateMaterial2;
+            }
+        else
+            {
+                return;
             }
         }
         
@@ -67,8 +82,11 @@ public class CubePlate : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Arm"))
+        if (collision.gameObject.CompareTag(cubeTag))
         {
+            cubeScript1.animator.GetComponent<Animator>().enabled = false;
+            cubeScript2.animator.GetComponent<Animator>().enabled = false;
+            
             transform.position = startPos;
             shouldDrop = false;
             t = 0f;
@@ -76,15 +94,16 @@ public class CubePlate : MonoBehaviour
 
             if (leftOrRight == 0)
             {
-                cubeRendererLeft.material = startMaterialLeft;
-                hoverCubeLeft.SetActive(false);
+                cubeRenderer1.material = startMaterial1;
+                hoverCube1.SetActive(false);
             }
             else if (leftOrRight == 1)
             {
-                cubeRendererRight.material = startMaterialRight;
-                hoverCubeRight.SetActive(false);
+                cubeRenderer2.material = startMaterial2;
+                hoverCube2.SetActive(false);
             }
             leftOrRight = 2;
+            exer1or2 = 2;
             
         }
     }
@@ -114,20 +133,22 @@ public class CubePlate : MonoBehaviour
             if (t >= 1f)
             {
                 cube.SetParent(null);
+                cubeScript1.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
+                cubeScript2.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
 
                 if (leftOrRight == 0)
                 { 
-                    cubeRendererLeft.material = lockedInMaterialLeft;
-                    hoverCubeLeft.SetActive(true);
+                    cubeRenderer1.material = lockedInMaterial1;
+                    hoverCube1.SetActive(true);
                 }
                 else if (leftOrRight == 1)
                 {
-                    cubeRendererRight.material = lockedInMaterialRight;
-                    hoverCubeRight.SetActive(true);
+                    cubeRenderer2.material = lockedInMaterial2;
+                    hoverCube2.SetActive(true);
                 }
                 
             }   
         }
-        
+         
     }
 }
