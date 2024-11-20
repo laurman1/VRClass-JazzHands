@@ -38,7 +38,7 @@ public class CubePlate : MonoBehaviour
     {
         startPos = plate.transform.position;
         lerpTo = new Vector3(startPos.x, startPos.y-plateDrop, startPos.z);
-        
+        leftOrRight = 2;
 
     }
 
@@ -84,6 +84,8 @@ public class CubePlate : MonoBehaviour
                 cubeRendererRight.material = startMaterialRight;
                 hoverCubeRight.SetActive(false);
             }
+            leftOrRight = 2;
+            
         }
     }
 
@@ -126,5 +128,6 @@ public class CubePlate : MonoBehaviour
                 
             }   
         }
+        
     }
 }
