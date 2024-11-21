@@ -1297,11 +1297,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44f12a092fffe4c3a9c0b35936fee789,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1703022748}
+      addedObject: {fileID: 1703022747}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 44f12a092fffe4c3a9c0b35936fee789,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1703022747}
+      addedObject: {fileID: 1703022748}
   m_SourcePrefab: {fileID: 100100000, guid: 44f12a092fffe4c3a9c0b35936fee789, type: 3}
 --- !u!1 &511725582
 GameObject:
@@ -3622,10 +3622,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
   lerpSpeed: 0.8
-  plate: {fileID: 1311169898}
+  plate: {fileID: 1311169903}
   hoverCube1: {fileID: 1897965842}
   hoverCube2: {fileID: 1595286972}
-  hoverScript: {fileID: 532998194}
   cubeTag: Exer
   cube1Name: Cube1
   cube2Name: Cube2
@@ -3967,10 +3966,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {x: 0, y: 0, z: 0}
   lerpSpeed: 0.8
-  plate: {fileID: 1457195187}
+  plate: {fileID: 1457195191}
   hoverCube1: {fileID: 532998193}
   hoverCube2: {fileID: 1534890160}
-  hoverScript: {fileID: 532998194}
   cubeTag: Arm
   cube1Name: CubeLeft
   cube2Name: CubeRight

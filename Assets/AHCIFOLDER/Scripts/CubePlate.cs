@@ -9,10 +9,10 @@ public class CubePlate : MonoBehaviour
     public Vector3 startPos;
     private Vector3 lerpTo;
     public float lerpSpeed;
-    public GameObject plate;
+    public Transform plate;
     public GameObject hoverCube1;
     public GameObject hoverCube2;
-    public HoverRotate hoverScript;
+    //public HoverRotate hoverScript;
 
     public string cubeTag;
     public string cube1Name;
@@ -56,7 +56,7 @@ public class CubePlate : MonoBehaviour
         if (collision.gameObject.CompareTag(cubeTag))
         {
             cube = collision.transform;
-            cube.SetParent(plate.transform);
+            
 
             StartCoroutine(waitBeforeLerp());
 
@@ -84,9 +84,9 @@ public class CubePlate : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(cubeTag))
         {
+
             cubeScript1.animator.GetComponent<Animator>().enabled = false;
             cubeScript2.animator.GetComponent<Animator>().enabled = false;
-            
             transform.position = startPos;
             shouldDrop = false;
             t = 0f;
@@ -113,7 +113,7 @@ public class CubePlate : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         shouldDrop = true;
-
+        //cube.SetParent(plate);
     }
 
     void Update()
@@ -130,19 +130,26 @@ public class CubePlate : MonoBehaviour
             transform.position = Vector3.Lerp(startPos, lerpTo, t);
 
 
-            if (t >= 1f)
+            if (t == 1f)
             {
-                cube.SetParent(null);
+                
+                
                 cubeScript1.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
                 cubeScript2.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
+                
+                //cubeScript1.cubeSelf.transform.SetParent(null);
+                //cubeScript2.cubeSelf.transform.SetParent(null);
+
 
                 if (leftOrRight == 0)
-                { 
+                {
+                    
                     cubeRenderer1.material = lockedInMaterial1;
                     hoverCube1.SetActive(true);
                 }
                 else if (leftOrRight == 1)
                 {
+                    
                     cubeRenderer2.material = lockedInMaterial2;
                     hoverCube2.SetActive(true);
                 }

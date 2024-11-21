@@ -33,6 +33,7 @@ public class SlectionState : MonoBehaviour
             armsText.text = "Selected Arm: None";
         }
 
+        
         if (exerPlateScript.exer1or2 == 0)
         {
             exerText.text = "Selected Exericese: 1";
