@@ -53,6 +53,7 @@ public class CubePlate : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("collision");
         if (collision.gameObject.CompareTag(cubeTag))
         {
             cube = collision.transform;
@@ -82,11 +83,14 @@ public class CubePlate : MonoBehaviour
 
     public void OnCollisionExit(Collision collision)
     {
+        Debug.Log("collisionexit");
+
         if (collision.gameObject.CompareTag(cubeTag))
         {
 
             cubeScript1.animator.GetComponent<Animator>().enabled = false;
             cubeScript2.animator.GetComponent<Animator>().enabled = false;
+            
             transform.position = startPos;
             shouldDrop = false;
             t = 0f;
@@ -107,6 +111,9 @@ public class CubePlate : MonoBehaviour
             
         }
     }
+    
+
+    
 
 
     private IEnumerator waitBeforeLerp()

@@ -46,7 +46,7 @@ public class SlectionState : MonoBehaviour
         {
             exerText.text = "Selected Exercise: None";
         }
-        Debug.Log("exer: " + exerPlateScript.exer1or2);
+        //Debug.Log("exer: " + exerPlateScript.exer1or2);
 
     }
 }
