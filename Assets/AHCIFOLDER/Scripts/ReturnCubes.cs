@@ -18,6 +18,7 @@ public class ReturnCubes : MonoBehaviour
     public GameObject cubeSelf;
 
     public string correctPlate;
+    public GameObject cubeParent;
 
     // Start is called before the first frame update
     void Start()
@@ -39,23 +40,34 @@ public class ReturnCubes : MonoBehaviour
         {
             if (collision.gameObject.name == correctPlate)
             {
+                if (cubeParent != null)
+                {
+                    cubeParent.transform.position = new Vector3(platePos.x,platePos.y+yRise,platePos.z);
+                }
+
+                Debug.Log("platehit");
                 animator.GetComponent<Animator>().enabled = true;
                 cubeSelf.GetComponent<XRGrabInteractable>().enabled = false;
                 transform.position = platePos;
+                
                 transform.rotation = Quaternion.identity;
                 animator.SetTrigger(animTrigger);
+
             }
             else
             {
+                Debug.Log("SpawnPos");
                 transform.position = spawnPos;
+                
             }
         }
         else if (collision.gameObject.CompareTag("Floor"))
         {
+            Debug.Log("Floorhit");
             transform.position = spawnPos;
         }
         
     }
+    
 
-   
 }
