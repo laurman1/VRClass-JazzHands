@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hologram
+  m_Name: HologramTask1
   m_Shader: {fileID: -6465566751694194690, guid: 95f3f1a8b2de54f99ad364d043f3a702,
     type: 3}
   m_Parent: {fileID: 0}
