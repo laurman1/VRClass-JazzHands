@@ -10,6 +10,13 @@ public class SlectionState : MonoBehaviour
     public TextMeshProUGUI exerText;
     public CubePlate armsPlateScript;
     public CubePlate exerPlateScript;
+
+    public AudioSource canvasOpen;
+    public AudioSource canvasClose;
+
+    
+    
+    
     
     // Start is called before the first frame update
     void Start()
@@ -48,5 +55,22 @@ public class SlectionState : MonoBehaviour
         }
         //Debug.Log("exer: " + exerPlateScript.exer1or2);
 
+    }
+
+    public void CanvasOnOff(GameObject canvas)
+    {
+        
+        if (canvas.activeSelf)
+        {
+            
+            canvas.SetActive(false);
+            canvasClose.Play();
+        }
+        else
+        {
+            canvas.SetActive(true);
+            canvasOpen.Play();
+
+        }
     }
 }

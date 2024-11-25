@@ -1,6 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -9,6 +10,7 @@ public class ReturnCubes : MonoBehaviour
 {
     private Vector3 spawnPos;
     private Vector3 platePos;
+    private Quaternion spawnRotation;
 
     public GameObject plate;
     public float yRise;
@@ -18,11 +20,14 @@ public class ReturnCubes : MonoBehaviour
     public GameObject cubeSelf;
 
     public string correctPlate;
-    public GameObject cubeParent;
+
+    public AudioSource wrongPlate;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnRotation = transform.rotation;
         spawnPos = transform.position;
         platePos = plate.transform.position;
         animator.GetComponent<Animator>().enabled = false;
@@ -40,17 +45,17 @@ public class ReturnCubes : MonoBehaviour
         {
             if (collision.gameObject.name == correctPlate)
             {
-                if (cubeParent != null)
-                {
-                    cubeParent.transform.position = new Vector3(platePos.x,platePos.y+yRise,platePos.z);
-                }
+                
+                
+                
+                
 
                 Debug.Log("platehit");
                 animator.GetComponent<Animator>().enabled = true;
                 cubeSelf.GetComponent<XRGrabInteractable>().enabled = false;
                 transform.position = platePos;
-                
-                transform.rotation = Quaternion.identity;
+
+                transform.rotation = spawnRotation;
                 animator.SetTrigger(animTrigger);
 
             }
@@ -58,7 +63,7 @@ public class ReturnCubes : MonoBehaviour
             {
                 Debug.Log("SpawnPos");
                 transform.position = spawnPos;
-                
+                wrongPlate.Play();
             }
         }
         else if (collision.gameObject.CompareTag("Floor"))
@@ -68,6 +73,7 @@ public class ReturnCubes : MonoBehaviour
         }
         
     }
+
     
 
 }
