@@ -11,6 +11,10 @@ TagManager:
   - Floor
   - Plate
   - Exer
+  - LeftController
+  - RightController
+  - AnglePlatform
+  - RepsPlatform
   layers:
   - Default
   - TransparentFX

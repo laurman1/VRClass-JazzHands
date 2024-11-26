@@ -17,16 +17,18 @@ public class SlectionState : MonoBehaviour
     public GameObject anglePlatform;
     private float angleScale;
     private float angle;
-    private int anglesInt;
+    public int anglesInt;
     private string anglesString = "Selected Angle: ";
+    public TextMeshProUGUI smallAngleText;
 
     public GameObject repsCube;
     private Vector3 RepsCubeScale;
     public GameObject repsPlatform;
     private float repsScale;
     private float reps;
-    private int repsInt;
+    public int repsInt;
     private string repsString = "Selected Reps: ";
+    public TextMeshProUGUI smallRepsText;
 
     public CubePlate armsPlateScript;
     public CubePlate exerPlateScript;
@@ -76,10 +78,10 @@ public class SlectionState : MonoBehaviour
         //Debug.Log("exer: " + exerPlateScript.exer1or2);
 
         
-        DisplayTMP(angleCube, angleScale, angle, anglesInt, angleText, 0.05f, 0.2f, 45f, 90f, anglesString);
+        DisplayTMP(angleCube, angleScale, angle, anglesInt, angleText, smallAngleText, 0.05f, 0.2f, 45f, 90f, anglesString);
         ScalePlatform(AnglesCubeScale, angleCube, anglePlatform);       
         
-        DisplayTMP(repsCube, repsScale, reps, repsInt, repsText, 0.05f, 0.2f, 5f, 15f, repsString);    
+        DisplayTMP(repsCube, repsScale, reps, repsInt, repsText, smallRepsText, 0.05f, 0.2f, 5f, 15f, repsString);    
         ScalePlatform(RepsCubeScale, repsCube, repsPlatform);
     }
 
@@ -90,12 +92,13 @@ public class SlectionState : MonoBehaviour
         return platform.transform.localScale = new Vector3(cubeScale.x, platform.transform.localScale.y, cubeScale.z);
     }
 
-    TextMeshProUGUI DisplayTMP(GameObject cube, float scale, float value, int valueInt, TextMeshProUGUI text, float oldMin, float oldMax, float newMin, float newMax, string uiString)
+    TextMeshProUGUI DisplayTMP(GameObject cube, float scale, float value, int valueInt, TextMeshProUGUI text, TextMeshProUGUI smallText, float oldMin, float oldMax, float newMin, float newMax, string uiString)
     {
         scale = cube.transform.localScale.x;
         value = newMin + (scale - oldMin) * (newMax - newMin) / (oldMax - oldMin);
         valueInt = (int)value;
         text.text = (uiString + valueInt);
+        smallText.text = (valueInt).ToString();
         return text;
     }
 
