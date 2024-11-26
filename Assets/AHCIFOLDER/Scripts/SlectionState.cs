@@ -3,11 +3,31 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 public class SlectionState : MonoBehaviour
 {
     public TextMeshProUGUI armsText;
     public TextMeshProUGUI exerText;
+    public TextMeshProUGUI angleText;
+    public TextMeshProUGUI repsText;
+
+    public GameObject angleCube;
+    private Vector3 AnglesCubeScale;
+    public GameObject anglePlatform;
+    private float angleScale;
+    private float angle;
+    private int anglesInt;
+    private string anglesString = "Selected Angle: ";
+
+    public GameObject repsCube;
+    private Vector3 RepsCubeScale;
+    public GameObject repsPlatform;
+    private float repsScale;
+    private float reps;
+    private int repsInt;
+    private string repsString = "Selected Reps: ";
+
     public CubePlate armsPlateScript;
     public CubePlate exerPlateScript;
 
@@ -55,22 +75,45 @@ public class SlectionState : MonoBehaviour
         }
         //Debug.Log("exer: " + exerPlateScript.exer1or2);
 
+        
+        DisplayTMP(angleCube, angleScale, angle, anglesInt, angleText, 0.05f, 0.2f, 45f, 90f, anglesString);
+        ScalePlatform(AnglesCubeScale, angleCube, anglePlatform);       
+        
+        DisplayTMP(repsCube, repsScale, reps, repsInt, repsText, 0.05f, 0.2f, 5f, 15f, repsString);    
+        ScalePlatform(RepsCubeScale, repsCube, repsPlatform);
+    }
+
+    
+    Vector3 ScalePlatform(Vector3 cubeScale, GameObject cube, GameObject platform)
+    {
+        cubeScale = cube.transform.localScale;
+        return platform.transform.localScale = new Vector3(cubeScale.x, platform.transform.localScale.y, cubeScale.z);
+    }
+
+    TextMeshProUGUI DisplayTMP(GameObject cube, float scale, float value, int valueInt, TextMeshProUGUI text, float oldMin, float oldMax, float newMin, float newMax, string uiString)
+    {
+        scale = cube.transform.localScale.x;
+        value = newMin + (scale - oldMin) * (newMax - newMin) / (oldMax - oldMin);
+        valueInt = (int)value;
+        text.text = (uiString + valueInt);
+        return text;
     }
 
     public void CanvasOnOff(GameObject canvas)
     {
-        
-        if (canvas.activeSelf)
-        {
-            
+
+         if (canvas.activeSelf)
+         {
             canvas.SetActive(false);
             canvasClose.Play();
-        }
-        else
-        {
+         }
+         else
+         {
             canvas.SetActive(true);
             canvasOpen.Play();
 
-        }
+         }
+    
     }
+
 }
