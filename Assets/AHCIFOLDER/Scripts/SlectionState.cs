@@ -36,7 +36,14 @@ public class SlectionState : MonoBehaviour
     public AudioSource canvasOpen;
     public AudioSource canvasClose;
 
-    
+    public GameObject hoverCubeR;
+    public GameObject hoverCubeL;
+    public GameObject hoverCube2;
+    public GameObject hoverCube1;
+    public GameObject hoverCubeReps;
+    public GameObject hoverCubeAngle;
+    public GameObject buttonLight;
+    public GameObject canvas;
     
     
     
@@ -83,6 +90,47 @@ public class SlectionState : MonoBehaviour
         
         DisplayTMP(repsCube, repsScale, reps, repsInt, repsText, smallRepsText, 0.05f, 0.2f, 5f, 15f, repsString);    
         ScalePlatform(RepsCubeScale, repsCube, repsPlatform);
+
+        /*if (hoverCube1.activeSelf || hoverCube2.activeSelf)
+        {
+            if (hoverCubeL.activeSelf || hoverCubeR.activeSelf)
+            {
+                if (hoverCubeReps.activeSelf && hoverCubeAngle.activeSelf)
+                {
+                    if (!canvas.activeSelf)
+                    {
+                        buttonLight.SetActive(true);
+                    }
+                    else
+                    {
+                        buttonLight.SetActive(false);
+                    }
+                }
+                else
+                {
+                    buttonLight.SetActive(false);
+                }
+            }
+            else
+            {
+                buttonLight.SetActive(false);
+            }
+        
+        }
+        else
+        {
+            buttonLight.SetActive(false);
+        }*/
+        if ((hoverCube1.activeSelf || hoverCube2.activeSelf) &&
+        (hoverCubeL.activeSelf || hoverCubeR.activeSelf) &&
+        hoverCubeReps.activeSelf && hoverCubeAngle.activeSelf)
+        {
+            buttonLight.SetActive(!canvas.activeSelf);
+        }
+        else
+        {
+            buttonLight.SetActive(false);
+        }
     }
 
     

@@ -47,6 +47,8 @@ public class CubePlate : MonoBehaviour
     public AudioSource spin;
     public AudioSource cubeRemoved;
 
+    public GameObject spotLight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -94,7 +96,7 @@ public class CubePlate : MonoBehaviour
         if (collision.gameObject.CompareTag(cubeTag))
         {
             cubeRemoved.Play();
-
+            spotLight.SetActive(false);
             cubeScript1.animator.GetComponent<Animator>().enabled = false;
             cubeScript2.animator.GetComponent<Animator>().enabled = false;
             
@@ -153,6 +155,7 @@ public class CubePlate : MonoBehaviour
                 
                 cubeScript1.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
                 cubeScript2.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
+                spotLight.SetActive(true);
                 
                 //cubeScript1.cubeSelf.transform.SetParent(null);
                 //cubeScript2.cubeSelf.transform.SetParent(null);

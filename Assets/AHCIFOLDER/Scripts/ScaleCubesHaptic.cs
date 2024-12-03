@@ -30,6 +30,10 @@ public class ScaleCubesHaptic : MonoBehaviour
     public string correctTag;
     private Rigidbody rb;
 
+    private int placedCounter = 0;
+    public GameObject hoverCube;
+    public GameObject spotLight;
+
 
     private void Awake()
     {
@@ -145,10 +149,24 @@ public class ScaleCubesHaptic : MonoBehaviour
     {
         if (other.gameObject.CompareTag(correctTag))
             {
+            placedCounter++;
             transform.position = startPos;
             transform.rotation = startRot;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            if (placedCounter > 2)
+            {
+                hoverCube.SetActive(true);
+                spotLight.SetActive(true);
+            }
         }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag(correctTag))
+            {
+                hoverCube.SetActive(false);
+                spotLight.SetActive(false);
+            }
     }
 }
