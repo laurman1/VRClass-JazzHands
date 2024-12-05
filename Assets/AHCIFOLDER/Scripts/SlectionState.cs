@@ -35,6 +35,7 @@ public class SlectionState : MonoBehaviour
 
     public AudioSource canvasOpen;
     public AudioSource canvasClose;
+    public AudioSource buttonLightSound;
 
     public GameObject hoverCubeR;
     public GameObject hoverCubeL;
@@ -126,6 +127,7 @@ public class SlectionState : MonoBehaviour
         hoverCubeReps.activeSelf && hoverCubeAngle.activeSelf)
         {
             buttonLight.SetActive(!canvas.activeSelf);
+            buttonLightSound.Play();
         }
         else
         {
