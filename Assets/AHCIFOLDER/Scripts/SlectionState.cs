@@ -127,12 +127,13 @@ public class SlectionState : MonoBehaviour
         hoverCubeReps.activeSelf && hoverCubeAngle.activeSelf)
         {
             buttonLight.SetActive(!canvas.activeSelf);
-            buttonLightSound.Play();
+            //buttonLightSound.Play();
         }
         else
         {
             buttonLight.SetActive(false);
         }
+
     }
 
     
