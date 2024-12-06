@@ -138,6 +138,8 @@ public class CubePlate : MonoBehaviour
         {
             // Enable hover effects and lock cube materials
             spotLight.SetActive(true);
+            cubeScript1.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
+            cubeScript2.cubeSelf.GetComponent<XRGrabInteractable>().enabled = true;
 
             if (leftOrRight == 0)
             {
